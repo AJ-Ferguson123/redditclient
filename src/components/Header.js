@@ -5,6 +5,7 @@ import { useState,
          useContext
 } from 'react'
 import Button from './Button'
+import ClickoutHandler from 'react-clickout-handler'
 import { 
   ChevronDownIcon,
   SearchIcon,
@@ -17,13 +18,12 @@ import {
 
 
 function Header () {
-  const [userDropdownVisibilityClass, setuserDropdownVisibiltyClass] = useState('hidden');
+  const [userDropdownVisibilityClass,setUserDropdownVisibilityClass] = useState('hidden');
   function toggleUserDropdown() {
     if (userDropdownVisibilityClass === 'hidden') {
-      setuserDropdownVisibiltyClass('block');
-    } 
-    else {
-      setuserDropdownVisibiltyClass('hidden');
+      setUserDropdownVisibilityClass('block');
+    } else {
+      setUserDropdownVisibilityClass('hidden');
     }
   }
   
@@ -39,18 +39,20 @@ function Header () {
 
 
           {/* <button className="px-2 py-1">
+          <ChatIcon className="text-gray-400 w-6 h-6 mx-6" />
           </button>
           <button className="px-2 py-1">
-            <ChatIcon className="h-6 w-6" />
+            <BellIcon className="text-gray-400 h-6 w-6 mx-6" />
           </button>          
           <button className="px-1 py-1">
-            <PlusIcon className="h-6 w-7" />
+            <PlusIcon className="text-gray-400 h-6 w-6 mx-6" />
              </button> */}
-        <div className="mx-2">
+
+        <div className="mx-2 hidden sm:block">
             <Button className="mr-1">Log In</Button>
             <Button className="">Sign Up</Button>
         </div>
-        
+        <ClickoutHandler onClickOut={() => setUserDropdownVisibilityClass('hidden')}>  
           <button className="rounded-md flex ml-4 border border-gray-700" onClick={() => toggleUserDropdown()}>
               <UserIcon className="w-6 h-6 text-gray-400 m-1" />                        
             <ChevronDownIcon className="text-gray-500 h-6 w-6 mt-2 m-1"  />                          
@@ -61,6 +63,7 @@ function Header () {
                Log In / Sign Up
               </button>
           </div>
+        </ClickoutHandler>
          
         </div>
       </header>

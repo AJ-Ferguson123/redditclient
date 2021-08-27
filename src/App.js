@@ -4,12 +4,13 @@ import Header from './components/Header';
 import BoardHeader from './components/BoardHeader';
 import PostForm from './components/PostForm';
 import {UserIcon } from '@heroicons/react/outline'
+import AuthModal from './components/AuthModal';
 
 function App() {
   return (
-    <>     
-      
+    <>   
       <Header />  
+      <AuthModal />
       <BoardHeader /> 
       <PostForm />
       <div className="px-6 bg-reddit_dark text-reddit_text">
